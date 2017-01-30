@@ -5,16 +5,17 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace creocoder\flysystem;
+namespace andrew72ru\flysystem;
 
-use League\Flysystem\GridFS\GridFSAdapter;
-use MongoClient;
+use andrew72ru\flysystem\GridFS\GridFSAdapter;
+use MongoDB\Driver\Manager;
+use MongoDB\GridFS\Bucket;
 use yii\base\InvalidConfigException;
 
 /**
  * GridFSFilesystem
  *
- * @author Alexander Kochetov <creocoder@gmail.com>
+ * @author Andrew Zhdanovskih <andrew72ru@gmail.com>
  */
 class GridFSFilesystem extends Filesystem
 {
@@ -48,6 +49,6 @@ class GridFSFilesystem extends Filesystem
      */
     protected function prepareAdapter()
     {
-        return new GridFSAdapter((new MongoClient($this->server))->selectDB($this->database)->getGridFS());
+        return new GridFSAdapter(new Bucket(new Manager($this->server), $this->database));
     }
 }

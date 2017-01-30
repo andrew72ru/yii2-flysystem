@@ -5,7 +5,7 @@
  * @license http://opensource.org/licenses/BSD-3-Clause
  */
 
-namespace creocoder\flysystem;
+namespace andrew72ru\flysystem;
 
 use Barracuda\Copy\API;
 use League\Flysystem\Copy\CopyAdapter;
